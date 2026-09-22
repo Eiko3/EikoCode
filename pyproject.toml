@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "eikocode"
+version = "0.1.0"
+description = "Windows 终端里的轻量 AI 编程助手"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Eiko" }]
+keywords = ["ai", "agent", "cli", "windows", "coding-assistant", "claude-code"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Chinese (Simplified)",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development",
+]
+dependencies = [
+    "rich>=13.7.0",
+    "anthropic>=0.40.0",
+    "openai>=1.55.0",
+    "httpx>=0.27.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Eiko3/EikoCode"
+Repository = "https://github.com/Eiko3/EikoCode"
+Issues = "https://github.com/Eiko3/EikoCode/issues"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+]
+# Tab 补全（v9，可选）：Windows 下提供 readline 实现；未安装时静默降级
+completions = [
+    "pyreadline3>=3.4.1",
+]
+
+[project.scripts]
+eikocode = "eikocode.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["eikocode*"]

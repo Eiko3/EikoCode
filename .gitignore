@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+
+# EikoCode 运行时数据（会话存档 / 笔记 / 快照 / 工作树）
+.eikocode/
+# 项目级真实配置（含机器特定路径；模板 .eikocode.toml.example 正常入库）
+.eikocode.toml
+
+# 工作台会话数据（AI 会话记忆，不属于项目代码）
+.workbuddy/
+
+# 内部开发流程文档（spec / tasks / checklist，本地保留、不入开源仓库）
+spec.md
+tasks.md
+checklist.md
+
+# 构建与调试残留
+eikocode.egg-info/
+.pytest_tmp/
+debug_*.py
+v10_*.txt
+
+# 凭据防御（本设计密钥只存环境变量、永不落盘；以下为兜底防线）
+.env
+.env.*
+*.key
+*.pem
+secrets*
+credentials*.json
+
+# 生成的文档产物
+output/

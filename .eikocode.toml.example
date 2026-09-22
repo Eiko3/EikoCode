@@ -1,0 +1,29 @@
+# EikoCode 项目级配置示例。复制成 .eikocode.toml 后生效。
+#
+# API Key 不要写在这里。凭据只从环境变量读取，永远不会落盘。
+
+# 默认模型：claude-sonnet-5
+# 换成兼容协议的模型（OpenAI / DeepSeek / 通义 / 本地 Ollama）时，
+# 只要名字不以 claude 开头，就会自动走兼容协议那一家。
+model = "claude-sonnet-5"
+
+# 采样参数。注意：Anthropic 自 Opus 4.7 / Sonnet 5 起不接受采样参数，
+# 这一项只对兼容协议那一家生效。
+temperature = 0.7
+
+# 单轮回复的 token 上限。
+# 用带思考的模型（如 Sonnet 5）时，思考内容也占这个额度，
+# 长回答被截断的话把它调到 16000 左右。
+max_tokens = 4096
+
+# 上下文上限，用于 80% / 95% 两级提醒。
+context_limit = 200000
+
+# /model 命令用前缀表做离线校验。自部署模型的名字不在内置表里时，
+# 把前缀加到这里，例如 known_models = ["my-llm"]
+known_models = []
+
+# 工具自动批准。true = 读 / 写文件 / 非危险 Shell 直接执行，不再逐条确认。
+# 命中危险命令（rm -rf、format、shutdown 等）仍会拦下要求输入 yes，不受此项影响。
+# 运行时可用 /auto 开关；环境变量 EIKOCODE_AUTO_APPROVE 的优先级高于本文件。
+auto_approve = false
